@@ -11,8 +11,8 @@
 @interface MyViewController : UIViewController
 
 @property (assign, nonatomic) BOOL animated; // Primitives are assigned
-@property (strong, nonatomic) IBOutlet UILabel *numberLable;
-@property (strong, nonatomic) IBOutlet UISwitch *animatedSwitch;
+@property (weak  , nonatomic) IBOutlet UILabel *numberLable;
+@property (weak  , nonatomic) IBOutlet UISwitch *animatedSwitch;
 
 - (IBAction)nextView:(id)sender;
 - (IBAction)prevView:(id)sender;

@@ -46,7 +46,18 @@
     The UISwitch `animatedSwitch` controlls if the transition is animated or not.
  */
 - (IBAction)prevView:(id)sender {
-    [self.navigationController popViewControllerAnimated:self.animatedSwitch.on];
+    UINavigationController *navC = self.navigationController;
+    
+    NSInteger len = navC.viewControllers.count;
+    
+    MyViewController *mvc = nil;
+    
+    if(len >= 2)
+        mvc = (MyViewController*)[navC.viewControllers objectAtIndex:len-2];
+    
+    mvc.animated = self.animatedSwitch.on;
+    
+    [navC popViewControllerAnimated:self.animatedSwitch.on];
 }
 
 /** This method is used to return to the root ViewController.
@@ -71,11 +82,6 @@
     self.numberLable.text = self.title;
     self.animatedSwitch.on = self.animated;
 }
-
-//- (void)viewDidAppear:(BOOL)animated{
-//    [super viewDidAppear:animated];
-//    self.numberLable.text = self.title;
-//}
 
 - (void)viewDidUnload
 {
